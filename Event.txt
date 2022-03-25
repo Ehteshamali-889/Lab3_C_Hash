@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PracticeC
+{
+    public delegate string MyDelegate(string a);
+
+    public class Prac
+    {
+       
+    }
+    internal class Example
+    {
+        event MyDelegate myevent;
+        public Example()
+        {
+            this.myevent += new MyDelegate(this.WelcomeUser);
+        }
+        public string WelcomeUser(string username)
+        {
+            return "Welcome " + username;
+        }
+        static void Main(string[] args)
+        {
+            Example obj = new Example();
+            string result = obj.myevent("Ali");
+            Console.WriteLine(result);
+        }
+
+    }
+}

@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PracticeC
+{
+    public delegate void MyDeletgate(int a, int b);
+
+    public class Prac
+    {       
+        public void Sum(int a,int b)
+        {
+            Console.WriteLine( a + b);
+        }
+        public void Difference(int a,int b)
+        {
+            Console.WriteLine( a - b);
+        }
+        
+    }
+    internal class Example
+    {   
+        static void Main(string[] args)
+        {
+            Prac obj = new Prac();
+            MyDeletgate multicast1 = new MyDeletgate(obj.Sum);
+            multicast1+= new MyDeletgate(obj.Difference);
+            multicast1(5, 2);
+            
+
+        }
+
+    }
+}
